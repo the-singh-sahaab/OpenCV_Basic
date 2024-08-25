@@ -77,56 +77,56 @@ cv2.waitKey(0)
 # ========================================================================================================================================================
 
 #                            drawing shapes and text on image
-# img3 = np.zeros((512,512,3))
-# # rectangle || giving the pt1 for the one point of the rectangle and pt2 for the point diagonal to it.
-# cv2.rectangle(img3, pt1 = (100,100), pt2 = (300, 300), color= (255,0,0), thickness=-3)#boreder in positive will make outline and border -1 will comple colored box 
-# # circle
-# cv2.circle(img3, center = (100,400), radius= 50, color=(0,0,255), thickness=3)
-# # line
-# cv2.line(img3, pt1 = (0,0), pt2=(512, 512), color=(0,255,0), thickness=1)
-# # text
-# cv2.putText(img3,text="hey well",fontFace=cv2.FONT_HERSHEY_COMPLEX, org=(100,400), fontScale= 4, color=(0,255,0), thickness=4, lineType=cv2.LINE_AA)
-# cv2.imshow("____", img3)
-# cv2.waitKey(0)
+img3 = np.zeros((512,512,3))
+# rectangle || giving the pt1 for the one point of the rectangle and pt2 for the point diagonal to it.
+cv2.rectangle(img3, pt1 = (100,100), pt2 = (300, 300), color= (255,0,0), thickness=-3)#boreder in positive will make outline and border -1 will comple colored box 
+# circle
+cv2.circle(img3, center = (100,400), radius= 50, color=(0,0,255), thickness=3)
+# line
+cv2.line(img3, pt1 = (0,0), pt2=(512, 512), color=(0,255,0), thickness=1)
+# text
+cv2.putText(img3,text="hey well",fontFace=cv2.FONT_HERSHEY_COMPLEX, org=(100,400), fontScale= 4, color=(0,255,0), thickness=4, lineType=cv2.LINE_AA)
+cv2.imshow("____", img3)
+cv2.waitKey(0)
 
 # ========================================================================================================================================================
 
 #                            working with the open cv events
 
-# drawing = False
-# ix = -1
-# iy = -1
-# def draw(event, x, y, flags, params):#event{tell you the value associated with your event}, (x,y){tell you the position of your cursor on window}
-#     # print(event)
-#     #here event have 3 values :  0 : when the mouse is hovering the window 
-#     #                            1 : when the click event gets completed on the window 
-#     #                            4: when the click happend on the window
-#     global drawing, ix, iy
+drawing = False
+ix = -1
+iy = -1
+def draw(event, x, y, flags, params):#event{tell you the value associated with your event}, (x,y){tell you the position of your cursor on window}
+    # print(event)
+    #here event have 3 values :  0 : when the mouse is hovering the window 
+    #                            1 : when the click event gets completed on the window 
+    #                            4: when the click happend on the window
+    global drawing, ix, iy
     
-#     if event == 1:
-#         drawing = True
-#         ix = x
-#         iy = y
+    if event == 1:
+        drawing = True
+        ix = x
+        iy = y
         
-#     elif event  == 0:
-#         if drawing == True:
-#             cv2.rectangle(img, pt1 = (ix, iy),pt2 = (x,y), color=(0, 255,255), thickness=1)
+    elif event  == 0:
+        if drawing == True:
+            cv2.rectangle(img, pt1 = (ix, iy),pt2 = (x,y), color=(0, 255,255), thickness=1)
             
-#     if event == 4:
-#         drawing = False
-#         cv2.rectangle(img, pt1 = (ix, iy),pt2 = (x,y), color=(0, 255,255), thickness=1)
+    if event == 4:
+        drawing = False
+        cv2.rectangle(img, pt1 = (ix, iy),pt2 = (x,y), color=(0, 255,255), thickness=1)
     
     
-# cv2.namedWindow("window")#you have to tell what window name have you given like here i have taken window
-# cv2.setMouseCallback("window", draw)
+cv2.namedWindow("window")#you have to tell what window name have you given like here i have taken window
+cv2.setMouseCallback("window", draw)
 
-# img = np.zeros((1012,1012,3))
+img = np.zeros((1012,1012,3))
 
-# while True:
-#     cv2.imshow("window",img)
-#     if cv2.waitKey(1) & 0xFF == ord('x'):#0xFF == ord("x"){tell that if you press the x key then}
-#         break
-# cv2.destroyAllWindows()#closing all the tabs of image
+while True:
+    cv2.imshow("window",img)
+    if cv2.waitKey(1) & 0xFF == ord('x'):#0xFF == ord("x"){tell that if you press the x key then}
+        break
+cv2.destroyAllWindows()#closing all the tabs of image
 
 # ========================================================================================================================================================
 #                                croping out the selected sector
